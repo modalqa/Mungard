@@ -10,6 +10,7 @@
   <a href="https://github.com/modalqa/Mungard/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/modalqa/Mungard/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"></a>
 </p>
+
 [![GitGem](https://gitgem.org/api/badge/github/modalqa/Mungard.svg)](https://gitgem.org/github/modalqa/Mungard)
 
 Mungard is a **security layer for AI coding agents**. It helps you test the security of your code, of your AI agent's configuration and behavior, and of your MCP integrations, using existing scanners, targeted tests, evidence for every finding, and human approval for anything risky.
