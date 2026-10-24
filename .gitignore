@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.next/
+next-env.d.ts
+coverage/
+.env
+.env.*
+!.env.example
+# Mungard workspaces: keep only config files.
+**/.mungard/*
+!**/.mungard/config.yaml
+!**/.mungard/.gitignore
+.DS_Store
+*.log

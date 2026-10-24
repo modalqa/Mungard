@@ -1,0 +1,38 @@
+{
+  "name": "mungard-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Mungard - open-source, local-first AI security testing agent. Guard every agent action.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "packages/findings",
+    "packages/policy-engine",
+    "packages/adapters",
+    "packages/reporting",
+    "packages/core",
+    "packages/mcp-server",
+    "packages/cli",
+    "apps/web"
+  ],
+  "scripts": {
+    "build": "tsc -b packages/cli packages/mcp-server",
+    "build:web": "npm run build && npm run build -w @mungard/web",
+    "clean": "rm -rf packages/*/dist packages/*/tsconfig.tsbuildinfo apps/web/.next",
+    "typecheck": "tsc -b packages/cli packages/mcp-server && npm run typecheck -w @mungard/web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev:web": "npm run build && npm run dev -w @mungard/web",
+    "mungard": "node packages/cli/dist/index.js",
+    "licenses": "node scripts/check-licenses.mjs",
+    "selfscan": "node packages/cli/dist/index.js scan . --fail-on high"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

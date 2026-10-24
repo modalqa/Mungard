@@ -1,0 +1,20 @@
+{
+  "name": "@mungard/adapters",
+  "version": "0.1.0",
+  "description": "Security engine adapters (Semgrep, Gitleaks, npm audit, OWASP ZAP, OpenAPI, authz, MCP and agent-config inspectors).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": { "@mungard/findings": "0.1.0", "@mungard/policy-engine": "0.1.0", "@modelcontextprotocol/sdk": "^1.32.2", "yaml": "^2.9.1", "zod": "^4.6.7" }
+}

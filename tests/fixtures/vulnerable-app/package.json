@@ -1,0 +1,12 @@
+{
+  "name": "mungard-fixture-vulnerable-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Intentionally vulnerable fixture for Mungard tests. Do not deploy.",
+  "dependencies": {
+    "express": "4.17.1",
+    "lodash": "4.17.15",
+    "jsonwebtoken": "8.5.1",
+    "next": "14.0.0"
+  }
+}

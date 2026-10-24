@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Write|Edit|MultiEdit|NotebookEdit|WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mungard guard hook",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Bash(mungard approvals approve:*)",
+      "Bash(mungard approvals deny:*)",
+      "Edit(.mungard/**)",
+      "Write(.mungard/**)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fdf2f3;
+  --color-brand-100: #fbe3e6;
+  --color-brand-400: #e0566a;
+  --color-brand-500: #c42a40;
+  --color-brand-600: #a3192c;
+  --color-brand-700: #861424;
+  --color-brand-900: #4a0b14;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+}

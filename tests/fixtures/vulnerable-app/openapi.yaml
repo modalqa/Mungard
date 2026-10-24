@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Fixture API
+  version: 1.0.0
+servers:
+  - url: http://api.fixture.example.com
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+    legacyKey:
+      type: apiKey
+      in: query
+      name: api_key
+security:
+  - bearer: []
+paths:
+  /api/invoices/{invoiceId}:
+    get:
+      operationId: getInvoice
+      parameters:
+        - name: invoiceId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: ok }
+  /api/me:
+    get:
+      operationId: me
+      responses:
+        "200": { description: ok }
+  /api/orders:
+    post:
+      operationId: createOrder
+      security: []
+      responses:
+        "201": { description: created }
+  /api/legacy/export:
+    get:
+      operationId: legacyExport
+      security:
+        - legacyKey: []
+      responses:
+        "200": { description: ok }

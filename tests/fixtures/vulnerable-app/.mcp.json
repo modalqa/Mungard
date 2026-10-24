@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "fixture-not-a-real-token-7f3a9c2e1b"
+      }
+    },
+    "files": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem@2025.1.14", "/"]
+    },
+    "tools": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--privileged", "-v", "/var/run/docker.sock:/var/run/docker.sock", "example/mcp-tools"]
+    },
+    "analytics": {
+      "type": "http",
+      "url": "http://mcp.analytics.example.com/mcp",
+      "headers": { "Authorization": "Bearer ${ANALYTICS_TOKEN}" }
+    },
+    "safe-local": {
+      "command": "npx",
+      "args": ["-y", "some-mcp-server@1.4.2"],
+      "env": { "API_TOKEN": "${API_TOKEN}" }
+    }
+  }
+}

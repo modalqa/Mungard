@@ -1,0 +1,46 @@
+{
+  "name": "mungard",
+  "version": "0.1.0",
+  "description": "Mungard CLI - open-source AI security testing agent. Guard every agent action.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@mungard/adapters": "0.1.0",
+    "@mungard/core": "0.1.0",
+    "@mungard/findings": "0.1.0",
+    "@mungard/mcp-server": "0.1.0",
+    "@mungard/policy-engine": "0.1.0",
+    "@mungard/reporting": "0.1.0",
+    "commander": "^15.0.0"
+  },
+  "bin": {
+    "mungard": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "keywords": [
+    "security",
+    "sast",
+    "dast",
+    "mcp",
+    "ai-agent",
+    "claude-code",
+    "owasp",
+    "appsec"
+  ]
+}

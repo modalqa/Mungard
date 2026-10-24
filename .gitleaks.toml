@@ -1,0 +1,12 @@
+# Gitleaks configuration for this repository (CI secret scanning).
+# tests/fixtures holds intentionally fake credentials used by Mungard's tests.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Fake secrets in test fixtures; generated build output"
+paths = [
+  '''(^|/)tests/fixtures/''',
+  '''(^|/)\.next/''',
+  '''(^|/)node_modules/''',
+]

@@ -1,0 +1,12 @@
+# Mungard's configuration for scanning its own repository (used by CI self-scan).
+# tests/fixtures contains intentionally vulnerable code and fake secrets.
+version: 1
+project:
+  name: mungard
+engines:
+  semgrep:
+    exclude: ["tests/fixtures"]
+  gitleaks:
+    excludePaths: ["(^|/)tests/fixtures/"]
+ai:
+  provider: none

@@ -1,0 +1,4 @@
+# Mungard workspace: scan results, evidence and approvals stay local.
+*
+!.gitignore
+!config.yaml

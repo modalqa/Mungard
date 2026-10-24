@@ -1,0 +1,53 @@
+# Mungard config for the vulnerable-api fixture (used by tests and the demo).
+# Start the fixture first:  node tests/fixtures/vulnerable-api/server.mjs 4010
+# Test tokens are fake and must be provided through the environment:
+#   export MUNGARD_ALICE_TOKEN=alice-token MUNGARD_BOB_TOKEN=bob-token
+version: 1
+project:
+  name: vulnerable-api-fixture
+target:
+  baseUrl: http://127.0.0.1:4010
+  openapi: openapi.yaml
+policy:
+  targets:
+    allowedHosts: [127.0.0.1, localhost]
+    allowedPorts: [4010]
+  limits:
+    maxRequestsPerSecond: 50
+auth:
+  accounts:
+    - name: alice
+      role: member
+      headers:
+        Authorization: "Bearer ${env:MUNGARD_ALICE_TOKEN}"
+    - name: bob
+      role: member
+      headers:
+        Authorization: "Bearer ${env:MUNGARD_BOB_TOKEN}"
+authorization:
+  checks:
+    - id: invoice-ownership
+      description: Members can only read their own invoices
+      request: { method: GET, path: /api/invoices/inv_alice_1 }
+      owner: alice
+      denied: [bob, anonymous]
+      sensitiveMarkers: ["alice@fixture.test"]
+    - id: project-ownership
+      description: Members can only read their own projects
+      request: { method: GET, path: /api/projects/prj_alice }
+      owner: alice
+      denied: [bob, anonymous]
+      sensitiveMarkers: ["Alice secret roadmap"]
+  scenarios:
+    - id: no-shipping-unpaid-orders
+      description: An order cannot be shipped before it is paid
+      assumptions:
+        - Orders must be paid before they can be shipped.
+      steps:
+        - as: alice
+          request: { method: POST, path: /api/orders, json: { item: book } }
+          capture: { orderId: id }
+          expect: { statusIn: [201] }
+        - as: alice
+          request: { method: POST, path: "/api/orders/{{orderId}}/ship" }
+          expect: { statusIn: [400, 402, 403, 409, 422] }
