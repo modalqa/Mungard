@@ -25,7 +25,7 @@
     "@mungard/mcp-server": "0.1.0",
     "@mungard/policy-engine": "0.1.0",
     "@mungard/reporting": "0.1.0",
-    "commander": "^15.0.0"
+    "commander": "^15.1.0"
   },
   "bin": {
     "mungard": "./dist/index.js"
